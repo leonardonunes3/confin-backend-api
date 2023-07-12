@@ -4,7 +4,9 @@ import com.confin.confinbackendapi.dto.UserDto;
 import com.confin.confinbackendapi.model.User;
 import com.confin.confinbackendapi.repository.UserRepository;
 import com.confin.confinbackendapi.service.UserService;
+import org.springframework.stereotype.Service;
 
+@Service
 public class UserServiceImpl implements UserService {
 
     final UserRepository userRepository;
