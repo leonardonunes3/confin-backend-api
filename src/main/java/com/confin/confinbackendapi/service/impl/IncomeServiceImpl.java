@@ -5,7 +5,9 @@ import com.confin.confinbackendapi.model.Income;
 import com.confin.confinbackendapi.repository.IncomeRepository;
 import com.confin.confinbackendapi.service.IncomeService;
 import jakarta.persistence.EntityNotFoundException;
+import org.springframework.stereotype.Service;
 
+@Service
 public class IncomeServiceImpl implements IncomeService {
 
     final IncomeRepository incomeRepository;
@@ -19,8 +21,8 @@ public class IncomeServiceImpl implements IncomeService {
         Income income = new Income();
         income.setAmount(incomeDto.getAmount());
         income.setDescription(incomeDto.getDescription());
-        income.setBegin_date(incomeDto.getBegin_date());
-        income.setEnd_date(incomeDto.getEnd_date());
+        income.setBeginDate(incomeDto.getBeginDate());
+        income.setEndDate(incomeDto.getEndDate());
 
         /*
         TO-DO: Recover user id and set

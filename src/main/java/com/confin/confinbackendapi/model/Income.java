@@ -16,9 +16,9 @@ public class Income {
     private Long id;
     private String description;
     private BigDecimal amount;
-    private LocalDate begin_date;
-    private LocalDate end_date;
-    private Long user_id;
+    private LocalDate beginDate;
+    private LocalDate endDate;
+    private Long userId;
 
     public Long getId() {
         return id;
@@ -44,27 +44,29 @@ public class Income {
         this.amount = amount;
     }
 
-    public LocalDate getBegin_date() {
-        return begin_date;
+    public LocalDate getBeginDate() {
+        return beginDate;
     }
 
-    public void setBegin_date(LocalDate begin_date) {
-        this.begin_date = begin_date;
+    public void setBeginDate(LocalDate beginDate) {
+        this.beginDate = beginDate;
     }
 
-    public LocalDate getEnd_date() {
-        return end_date;
+    public LocalDate getEndDate() {
+        return endDate;
     }
 
-    public void setEnd_date(LocalDate end_date) {
-        this.end_date = end_date;
+    public void setEndDate(LocalDate endDate) {
+        this.endDate = endDate;
     }
 
-    public Long getUser_id() {
-        return user_id;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setUser_id(Long user_id) {
-        this.user_id = user_id;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
+
+
 }
