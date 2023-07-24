@@ -7,11 +7,11 @@ import java.time.LocalDate;
 
 public class ExpenseDto {
 
+    private Long userId;
     private String description;
     private BigDecimal amount;
     private LocalDate beginDate;
     private LocalDate endDate;
-    private Long userId;
     private Boolean installment;
     private Expense.category category;
 

@@ -2,7 +2,9 @@ package com.confin.confinbackendapi.service.impl;
 
 import com.confin.confinbackendapi.dto.IncomeDto;
 import com.confin.confinbackendapi.model.Income;
+import com.confin.confinbackendapi.model.User;
 import com.confin.confinbackendapi.repository.IncomeRepository;
+import com.confin.confinbackendapi.repository.UserRepository;
 import com.confin.confinbackendapi.service.IncomeService;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
@@ -12,22 +14,30 @@ public class IncomeServiceImpl implements IncomeService {
 
     final IncomeRepository incomeRepository;
 
-    public IncomeServiceImpl(IncomeRepository incomeRepository) {
+    final UserRepository userRepository;
+
+    public IncomeServiceImpl(IncomeRepository incomeRepository, UserRepository userRepository) {
         this.incomeRepository = incomeRepository;
+        this.userRepository = userRepository;
     }
 
     @Override
     public Income create(IncomeDto incomeDto) {
         Income income = new Income();
+        User user = userRepository.findById(incomeDto.getUserId())
+                .orElseThrow(
+                        ()-> new EntityNotFoundException(
+                                String.format(
+                                        "User with id [%d] was not found!",
+                                        incomeDto.getUserId()
+                                ))
+                );
+
         income.setAmount(incomeDto.getAmount());
         income.setDescription(incomeDto.getDescription());
         income.setBeginDate(incomeDto.getBeginDate());
         income.setEndDate(incomeDto.getEndDate());
-
-        /*
-        TO-DO: Recover user id and set
-        income.setUser_id();
-        * */
+        income.setUser(user);
 
         return incomeRepository.save(income);
     }

@@ -1,9 +1,6 @@
 package com.confin.confinbackendapi.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -14,12 +11,14 @@ public class UserConfig {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long userId;
     private LocalDate dueDate;
     private LocalDate closingDate;
     private BigDecimal expenseGoal;
     private LocalDate beginDate;
     private LocalDate endDate;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
     public Long getId() {
         return id;
@@ -27,14 +26,6 @@ public class UserConfig {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
     }
 
     public LocalDate getDueDate() {
@@ -75,5 +66,13 @@ public class UserConfig {
 
     public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
