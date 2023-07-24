@@ -1,19 +1,28 @@
 package com.confin.confinbackendapi.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
+@Table(name = "user")
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_id")
     private Long id;
     private String name;
+    @Column(unique=true)
     private String email;
     private String password;
+    @OneToMany(mappedBy = "user")
+    private Set<Income> incomes = new HashSet<>();
+    @OneToMany(mappedBy = "user")
+    private Set<Expense> expenses = new HashSet<>();
+    @OneToMany(mappedBy = "user")
+    private Set<UserConfig> usersConfigs = new HashSet<>();
 
     public Long getId() {
         return id;

@@ -6,13 +6,14 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Entity
-public class Income {
+public class UserConfig {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String description;
-    private BigDecimal amount;
+    private LocalDate dueDate;
+    private LocalDate closingDate;
+    private BigDecimal expenseGoal;
     private LocalDate beginDate;
     private LocalDate endDate;
     @ManyToOne
@@ -27,20 +28,28 @@ public class Income {
         this.id = id;
     }
 
-    public String getDescription() {
-        return description;
+    public LocalDate getDueDate() {
+        return dueDate;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setDueDate(LocalDate dueDate) {
+        this.dueDate = dueDate;
     }
 
-    public BigDecimal getAmount() {
-        return amount;
+    public LocalDate getClosingDate() {
+        return closingDate;
     }
 
-    public void setAmount(BigDecimal amount) {
-        this.amount = amount;
+    public void setClosingDate(LocalDate closingDate) {
+        this.closingDate = closingDate;
+    }
+
+    public BigDecimal getExpenseGoal() {
+        return expenseGoal;
+    }
+
+    public void setExpenseGoal(BigDecimal expenseGoal) {
+        this.expenseGoal = expenseGoal;
     }
 
     public LocalDate getBeginDate() {

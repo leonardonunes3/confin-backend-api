@@ -1,31 +1,19 @@
-package com.confin.confinbackendapi.model;
+package com.confin.confinbackendapi.dto;
 
-import jakarta.persistence.*;
+import com.confin.confinbackendapi.model.Expense;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-@Entity
-public class Income {
+public class ExpenseDto {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long userId;
     private String description;
     private BigDecimal amount;
     private LocalDate beginDate;
     private LocalDate endDate;
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+    private Boolean installment;
+    private Expense.category category;
 
     public String getDescription() {
         return description;
@@ -59,11 +47,27 @@ public class Income {
         this.endDate = endDate;
     }
 
-    public User getUser() {
-        return user;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public Boolean getInstallment() {
+        return installment;
+    }
+
+    public void setInstallment(Boolean installment) {
+        this.installment = installment;
+    }
+
+    public Expense.category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Expense.category category) {
+        this.category = category;
     }
 }
